@@ -55,10 +55,12 @@ if __name__ == "__main__":
     print("--------------------------------Problem (a)--------------------------------")
     for v in vals:
         v_primes = get_relative_primes(v)
-        print(f"Relative primes less than {v}: {v_primes}\t\tϕ({v}) = {len(v_primes)}")
+        print(f"Relative primes less than {v}: {v_primes}\t\tϕ({v}) = {len(v_primes)} (based on list size)")
     print("---------------------------------------------------------------------------\n")
 
     print("--------------------------------Problem (b)--------------------------------")
     for v in vals:
-        print(f"Prime factors of {v}: {get_prime_factors(v)}\t\tϕ({v}) = {phi(v)}")
+        print(f"Prime factors of {v}: {list(get_prime_factors(v))}\t\tϕ({v}) = {phi(v)} (based on formula)")
     print("---------------------------------------------------------------------------")
+
+    print("ϕ(n) seems to differ between the list size and the formula")
