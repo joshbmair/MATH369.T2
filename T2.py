@@ -56,11 +56,13 @@ if __name__ == "__main__":
     for v in vals:
         v_primes = get_relative_primes(v)
         print(f"Relative primes less than {v}: {v_primes}\t\tϕ({v}) = {len(v_primes)} (based on list size)")
+    print("\nThe pattern is whenever n is greater than the last prime number, that last prime number is ")
+    print("one of the next n's relative primes. And as n increases, the list of relative primes ")
+    print("iterates through various combinations of the previous relatives primes.")
     print("---------------------------------------------------------------------------\n")
 
     print("--------------------------------Problem (b)--------------------------------")
     for v in vals:
-        print(f"Prime factors of {v}: {list(get_prime_factors(v))}\t\tϕ({v}) = {phi(v)} (based on formula)")
+        print(f"Prime factors of {v}: {get_prime_factors(v)}\t\tϕ({v}) = {phi(v)} (based on formula)")
+    print("\nϕ(n) usually differs between the list size and the formula. It only matches when ")
     print("---------------------------------------------------------------------------")
-
-    print("ϕ(n) seems to differ between the list size and the formula")
