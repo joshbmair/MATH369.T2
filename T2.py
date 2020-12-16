@@ -3,7 +3,7 @@ import math
 
 def prime(n):                       # Returns whether n is prime
     for i in range(2, n):           # FIXME? Starts at 2 because that is first prime
-        if not (n % i):
+        if n % i == 0:
             return False            # If n is divisible by i, n is not prime
     
     return True                     # Otherwise, n is prime
@@ -26,26 +26,23 @@ def get_prime_factors(n):
 
     for i in range(n):
         if i > 1:                   # Skip integers >= 1
-            while not (o % i):      # while o is even
+            while o % i == 0:      # while o is even
                 factor_set.add(i)   # Add i to the set
                 o = o / i           # o /= i
 
     return factor_set
 
 def phi(n):
-    if n == 1:
-        return 1
-
-    res = n
+    result = n
     primes = get_prime_factors(n)
 
-    if not len(primes):
-        return 0
+    if len(primes) == 0:
+        return n
 
     for p in primes:
-        res = res * (1 - (1 / p))
+        result = result * (1 - (1 / p))
 
-    return int(res)
+    return int(result)
 
 if __name__ == "__main__":
     vals = []
