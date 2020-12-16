@@ -13,6 +13,17 @@ def get_prime_factors(n):
 
     return factor_set
 
+def phi(n):
+    res = n
+    primes = get_prime_factors(n)
+
+    for p in primes:
+        res = res * (1 - (1 / p))
+
+    return math.ceil(res)
+
 if __name__ == "__main__":
-    factor_set = get_prime_factors(213)
-    print(factor_set)
+    n = 12
+    factor_set = get_prime_factors(n)
+    print(f"Prime factors of {n}: {factor_set}")
+    print(f"ϕ({n}): {phi(n)}")
