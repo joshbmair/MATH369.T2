@@ -2,7 +2,7 @@ import sys
 import math
 
 def prime(n):                       # Returns whether n is prime
-    for i in range(2, n):           # FIXME? Starts at 2 because that is first prime
+    for i in range(2, n):           # Starts at 2 because that is first prime
         if n % i == 0:
             return False            # If n is divisible by i, n is not prime
     
@@ -17,11 +17,11 @@ def get_relative_primes(n):         # Returns a list of relative primes less tha
 
     return rel_primes
 
-def get_prime_factors(n):
+def get_prime_factors(n):           # Returns a list of the prime factors of n
     if prime(n):
         return {}
 
-    factor_set = set()              # Set, so there no repeat elements
+    factor_set = set()              # Set, so there are no repeat elements
     o = n                           # o is a copy of n
 
     for i in range(n):
@@ -61,5 +61,6 @@ if __name__ == "__main__":
     print("--------------------------------Problem (b)--------------------------------")
     for v in vals:
         print(f"Prime factors of {v}: {get_prime_factors(v)}\t\tϕ({v}) = {phi(v)} (based on formula)")
-    print("\nϕ(n) usually differs between the list size and the formula. It only matches when ")
+    print("\nϕ(n) usually differs between the list size and the formula. It only matches with some ")
+    print("values of n when n is a composite number.")
     print("---------------------------------------------------------------------------")
