@@ -18,6 +18,9 @@ def get_relative_primes(n):         # Returns a list of relative primes less tha
     return rel_primes
 
 def get_prime_factors(n):
+    if prime(n):
+        return {}
+
     factor_set = set()              # Set, so there no repeat elements
     o = n                           # o is a copy of n
 
@@ -49,14 +52,13 @@ if __name__ == "__main__":
     for i in range(2, 26):
         vals.append(i)
 
-    print("--------------------------------PROBLEM (a)--------------------------------")
+    print("--------------------------------Problem (a)--------------------------------")
     for v in vals:
         v_primes = get_relative_primes(v)
-        print(f"Relative primes of {v}: {v_primes}\t\tϕ({v}) = {len(v_primes)}")
+        print(f"Relative primes less than {v}: {v_primes}\t\tϕ({v}) = {len(v_primes)}")
     print("---------------------------------------------------------------------------\n")
 
-    print("--------------------------------PROBLEM (b)--------------------------------")
+    print("--------------------------------Problem (b)--------------------------------")
     for v in vals:
-        print(f"Prime factors of {v}: {get_prime_factors(v)}")
-        print(f"ϕ({v}) = {phi(v)}")
+        print(f"Prime factors of {v}: {get_prime_factors(v)}\t\tϕ({v}) = {phi(v)}")
     print("---------------------------------------------------------------------------")
