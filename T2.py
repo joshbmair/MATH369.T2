@@ -1,4 +1,5 @@
 import sys
+import math
 
 def prime(n):                       # Returns whether n is prime
     for i in range(2, n):           # FIXME? Starts at 2 because that is first prime
@@ -7,22 +8,14 @@ def prime(n):                       # Returns whether n is prime
     
     return True                     # Otherwise, n is prime
 
-def get_primes(n):                  # Gets primes less than n
-    primes_list = []
+def get_relative_primes(n):         # Returns a list of relative primes less than n
+    rel_primes = []
 
-    for i in range(2, n + 1):       # Starts at 2 because that is first prime
-        if prime(i):
-            primes_list.append(i)
-            
-    return primes_list  
+    for i in range(1, n):
+        if math.gcd(i, n) == 1 and prime(i):
+            rel_primes.append(i)
 
-def get_relative_primes(n):         # Gets relative primes less than n
-    primes = get_primes(n)          # 
-
-    for i in range(2, n + 1):
-        print(i) # TODO
-
-    return primes
+    return rel_primes
 
 def get_prime_factors(n):
     factor_set = set()              # Set, so there no repeat elements
@@ -37,8 +30,14 @@ def get_prime_factors(n):
     return factor_set
 
 def phi(n):
+    if n == 1:
+        return 1
+
     res = n
     primes = get_prime_factors(n)
+
+    if not len(primes):
+        return 0
 
     for p in primes:
         res = res * (1 - (1 / p))
@@ -47,13 +46,17 @@ def phi(n):
 
 if __name__ == "__main__":
     vals = []
-
     for i in range(2, 26):
         vals.append(i)
 
-    print(vals)
+    print("--------------------------------PROBLEM (a)--------------------------------")
+    for v in vals:
+        v_primes = get_relative_primes(v)
+        print(f"Relative primes of {v}: {v_primes}\t\tϕ({v}) = {len(v_primes)}")
+    print("---------------------------------------------------------------------------\n")
 
-    n = 12
-    factor_set = get_prime_factors(n)
-    print(f"Prime factors of {n}: {factor_set}")
-    print(f"ϕ({n}): {phi(n)}")
+    print("--------------------------------PROBLEM (b)--------------------------------")
+    for v in vals:
+        print(f"Prime factors of {v}: {get_prime_factors(v)}")
+        print(f"ϕ({v}) = {phi(v)}")
+    print("---------------------------------------------------------------------------")
